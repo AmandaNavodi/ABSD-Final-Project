@@ -235,7 +235,8 @@
         <script type="text/javascript" src="js/router.js"></script>
 
 
-        
+        <!--local js calls-->
+        <script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>
 
 
 

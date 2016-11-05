@@ -123,31 +123,34 @@
                     </div>
 
                     <div class="item form-group">
-                        
+
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="single_cal4">Date <span class="required">*</span></label>
-                        
+
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            
+
                             <input type="text" class="form-control has-feedback-left" data-validate-length-range="10" data-validate-words="1" id="single_cal4" required="required" placeholder="Date" aria-describedby="inputSuccess2Status4">
-                            
+
                             <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="false"></span>
-                            
+
                             <span id="inputSuccess2Status4" class="sr-only">(success)</span>
-                            
+
                         </div>
-                        
+
                     </div>
                     <div class="ln_solid"></div>
                     <div class="form-group">
                         <div class="col-md-6 col-md-offset-3">
                             <button type="reset" class="btn btn-primary">Cancel</button>
-                            <button id="send" type="submit" class="btn btn-success">Submit</button>
+                            <button id="save" class="btn btn-success">Save</button>
                         </div>
                     </div>
                 </form>
             </div>
         </div>
     </div>
+
+  
+
 
     <script>
         $(document).ready(function () {
@@ -192,4 +195,9 @@
             return false;
         });
     </script>
+
     <!-- /validator -->
+    
+    <!--local js calls-->
+        <script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>
+

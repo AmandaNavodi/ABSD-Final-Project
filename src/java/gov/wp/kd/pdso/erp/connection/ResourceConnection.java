@@ -11,4 +11,6 @@ package gov.wp.kd.pdso.erp.connection;
  */
 public interface ResourceConnection {
     
+    public Object getConnection()throws Exception;
+    
 }

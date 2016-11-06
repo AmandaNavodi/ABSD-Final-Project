@@ -23,7 +23,27 @@ var senior_citizenship_ID = (function () {
         console.log(division);
         console.log(district);
         console.log(single_cal4);
-        
+
+
+        return $.ajax({
+            url: "IDApplicant",
+            type: "POST",
+            contentType: "application/json",            
+            data: JSON.stringify({
+                'name': name,
+                'telephone': telephone,
+                'address': address,
+                'gender': gender,
+                'occupation': occupation,
+                'birthday': birthday,
+                'nic': nic,
+                'grama': grama,
+                'division': division,
+                'district': district,
+                'single_cal4': single_cal4
+            })
+        });
+
     };
 
 
@@ -47,13 +67,7 @@ var senior_citizenship_ID = (function () {
                 $('#single_cal4').val()
                 );
 
-
-
-
-
     });
-
-
 
     return fns;
 

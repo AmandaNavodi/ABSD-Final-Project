@@ -128,11 +128,9 @@
 
                         <div class="col-md-6 col-sm-6 col-xs-12">
 
-                            <input type="text" class="form-control has-feedback-left" data-validate-length-range="10" data-validate-words="1" id="single_cal4" required="required" placeholder="Date" aria-describedby="inputSuccess2Status4">
+                            <input type="text" class="form-control" data-validate-length-range="10" data-validate-words="1" id="single_cal4" required="required" placeholder="Date" aria-describedby="inputSuccess2Status4">
 
-                            <span class="fa fa-calendar-o form-control-feedback left" aria-hidden="false"></span>
 
-                            <span id="inputSuccess2Status4" class="sr-only">(success)</span>
 
                         </div>
 
@@ -149,19 +147,16 @@
         </div>
     </div>
 
-  
+
 
 
     <script>
-        $(document).ready(function () {
-
-            $('#single_cal4').daterangepicker({
-                dateFormat: 'YYYY-MM-DD',
-                singleDatePicker: true,
-                calender_style: "picker_4"
-            }, function (start, end, label) {
-                console.log(start.toISOString(), end.toISOString(), label);
-            });
+        var date = new Date();
+        var year = date.getFullYear();
+        var day = date.getDate();
+        var month = date.getMonth();
+        $('#single_cal4').on('click', function () {
+            $('#single_cal4').val(year + '/' + month + '/' + day);
         });
     </script>
 
@@ -197,7 +192,7 @@
     </script>
 
     <!-- /validator -->
-    
+
     <!--local js calls-->
-        <script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>
+    <script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>
 

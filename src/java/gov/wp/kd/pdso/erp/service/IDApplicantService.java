@@ -3,12 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package gov.wp.kd.pdso.erp.dao.impl;
+package gov.wp.kd.pdso.erp.service;
 
 /**
  *
  * @author nisalsp9
  */
-public class NewClass {
+public interface IDApplicantService {
     
 }

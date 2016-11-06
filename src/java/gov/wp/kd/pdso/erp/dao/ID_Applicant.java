@@ -5,10 +5,15 @@
  */
 package gov.wp.kd.pdso.erp.dao;
 
+import gov.wp.kd.pdso.erp.dto.IDApplicant;
+import java.sql.SQLException;
+
 /**
  *
  * @author nisalsp9
  */
-public class NewClass {
+public interface ID_Applicant {
+    
+    public boolean addIDApplicant(IDApplicant applicant)throws ClassNotFoundException,SQLException;
     
 }

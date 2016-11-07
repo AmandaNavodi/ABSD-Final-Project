@@ -7,7 +7,7 @@ package gov.wp.kd.pdso.erp.service.impl;
 
 import gov.wp.kd.pdso.erp.dao.ID_Applicant;
 import gov.wp.kd.pdso.erp.dao.impl.IDApplicantImpl;
-import gov.wp.kd.pdso.erp.dto.IDApplicant;
+import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import gov.wp.kd.pdso.erp.service.IDApplicantService;
 import java.sql.SQLException;
 
@@ -17,7 +17,7 @@ import java.sql.SQLException;
  */
 public class IDApplicantServieImpl implements IDApplicantService{
 
-    public boolean addIDApplicant(IDApplicant applicant) throws ClassNotFoundException, SQLException {
+    public boolean addIDApplicant(IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
 
         ID_Applicant dao = new IDApplicantImpl();
         

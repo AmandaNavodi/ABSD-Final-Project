@@ -7,7 +7,7 @@ package gov.wp.kd.pdso.erp.dao.impl;
 
 import gov.wp.kd.pdso.erp.connection.factory.DatabaseResourceFactory;
 import gov.wp.kd.pdso.erp.dao.ID_Applicant;
-import gov.wp.kd.pdso.erp.dto.IDApplicant;
+import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,19 +18,20 @@ import java.sql.Statement;
  */
 public class IDApplicantImpl implements ID_Applicant{
 
-    public boolean addIDApplicant(IDApplicant applicant) throws ClassNotFoundException, SQLException {
+    public boolean addIDApplicant(IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
 
         String sql = "insert into ID_applicant value ("
-                + "'"+applicant.getName()+"'"
-                + "'"+applicant.getTel()+"'"
-                + "'"+applicant.getAddress()+"'"
-                + "'"+applicant.getGender()+"'"
-                + "'"+applicant.getJob()+"'"
-                + "'"+applicant.getDOB()+"'"
-                + "'"+applicant.getNIC()+"'"
-                + "'"+applicant.getGrama()+"'"
-                + "'"+applicant.getDSD()+"'"
-                + "'"+applicant.getDistrict()+"'"
+                + "'0',"
+                + "'"+applicant.getName()+"',"
+                + "'"+applicant.getTel()+"',"
+                + "'"+applicant.getAddress()+"',"
+                + "'"+applicant.getGender()+"',"
+                + "'"+applicant.getJob()+"',"
+                + "'"+applicant.getDOB()+"',"
+                + "'"+applicant.getNIC()+"',"
+                + "'"+applicant.getGrama()+"',"
+                + "'"+applicant.getDSD()+"',"
+                + "'"+applicant.getDistrict()+"',"
                 + "'"+applicant.getDate()+"')";
         
         Connection connection = DatabaseResourceFactory.getResourceFactory().getConnection();

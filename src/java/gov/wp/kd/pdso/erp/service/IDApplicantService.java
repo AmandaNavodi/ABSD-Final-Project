@@ -5,7 +5,7 @@
  */
 package gov.wp.kd.pdso.erp.service;
 
-import gov.wp.kd.pdso.erp.dto.IDApplicant;
+import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import java.sql.SQLException;
 
 /**
@@ -13,6 +13,6 @@ import java.sql.SQLException;
  * @author nisalsp9
  */
 public interface IDApplicantService {
-        public boolean addIDApplicant(IDApplicant applicant)throws ClassNotFoundException,SQLException;
+        public boolean addIDApplicant(IDApplicantDTO applicant)throws ClassNotFoundException,SQLException;
 
 }

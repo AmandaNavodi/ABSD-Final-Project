@@ -16,30 +16,28 @@ import java.sql.Statement;
  *
  * @author nisalsp9
  */
-public class IDApplicantImpl implements ID_Applicant{
+public class IDApplicantImpl implements ID_Applicant {
 
-    public boolean addIDApplicant(IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
+    public boolean addIDApplicant(Connection connection, IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
 
         String sql = "insert into ID_applicant value ("
                 + "'0',"
-                + "'"+applicant.getName()+"',"
-                + "'"+applicant.getTel()+"',"
-                + "'"+applicant.getAddress()+"',"
-                + "'"+applicant.getGender()+"',"
-                + "'"+applicant.getJob()+"',"
-                + "'"+applicant.getDOB()+"',"
-                + "'"+applicant.getNIC()+"',"
-                + "'"+applicant.getGrama()+"',"
-                + "'"+applicant.getDSD()+"',"
-                + "'"+applicant.getDistrict()+"',"
-                + "'"+applicant.getDate()+"')";
-        
-        Connection connection = DatabaseResourceFactory.getResourceFactory().getConnection();
-        
+                + "'" + applicant.getName() + "',"
+                + "'" + applicant.getTel() + "',"
+                + "'" + applicant.getAddress() + "',"
+                + "'" + applicant.getGender() + "',"
+                + "'" + applicant.getJob() + "',"
+                + "'" + applicant.getDOB() + "',"
+                + "'" + applicant.getNIC() + "',"
+                + "'" + applicant.getGrama() + "',"
+                + "'" + applicant.getDSD() + "',"
+                + "'" + applicant.getDistrict() + "',"
+                + "'" + applicant.getDate() + "')";
+
         Statement statement = connection.createStatement();
-        
+
         return 0 < statement.executeUpdate(sql);
-        
+
     }
-    
+
 }

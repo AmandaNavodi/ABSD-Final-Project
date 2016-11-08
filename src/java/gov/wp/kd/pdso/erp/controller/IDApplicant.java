@@ -5,12 +5,15 @@
  */
 package gov.wp.kd.pdso.erp.controller;
 
+import com.sun.xml.internal.ws.db.DatabindingFactoryImpl;
+import gov.wp.kd.pdso.erp.connection.factory.DatabaseResourceFactory;
 import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import gov.wp.kd.pdso.erp.service.IDApplicantService;
 import gov.wp.kd.pdso.erp.service.impl.IDApplicantServieImpl;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,7 +23,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.json.JSONException;
 import org.json.JSONObject;
-
 
 /**
  *
@@ -58,13 +60,10 @@ public class IDApplicant extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
-        
-        
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         System.out.println("do get hit");
-        
-        
-        
+
     }
 
     /**
@@ -78,12 +77,11 @@ public class IDApplicant extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        
         try {
-            BufferedReader reader =  request.getReader();
-            
+            BufferedReader reader = request.getReader();
+
             JSONObject jsonObject = new JSONObject(reader.readLine().toString());
-            
+
             String name = jsonObject.getString("name");
             String tel = jsonObject.getString("telephone");
             String address = jsonObject.getString("address");
@@ -95,27 +93,27 @@ public class IDApplicant extends HttpServlet {
             String DSD = jsonObject.getString("division");
             String district = jsonObject.getString("district");
             String date = jsonObject.getString("single_cal4");
-            
-            
+
             IDApplicantDTO dTO = new IDApplicantDTO(0, name, tel, address, gender, job, DOB, NIC, grama, DSD, district, date);
-            
+
             IDApplicantService service = new IDApplicantServieImpl();
-            
-          boolean rst =  service.addIDApplicant(dTO);
-           
-          
-          if(rst){
-          
-              System.out.println("saved");
-          
-          }else{
-          
-              System.out.println("fail");
-          
-          }
-            
-            
-            
+
+            Connection connection = DatabaseResourceFactory.getResourceFactory().getConnection();
+
+            boolean rst = service.addIDApplicant(connection, dTO);
+
+            if (rst) {
+
+                System.out.println("saved");
+                connection.close();
+
+            } else {
+
+                System.out.println("fail");
+                connection.close();
+
+            }
+
         } catch (JSONException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

@@ -5,7 +5,6 @@
  */
 package gov.wp.kd.pdso.erp.dao.impl;
 
-import gov.wp.kd.pdso.erp.connection.factory.DatabaseResourceFactory;
 import gov.wp.kd.pdso.erp.dao.ID_Applicant;
 import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import java.sql.Connection;

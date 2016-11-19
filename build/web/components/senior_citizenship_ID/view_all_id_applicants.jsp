@@ -7,7 +7,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-striped table-bordered" id="campaign-table">
+        <table class="table table-striped table-bordered" id="id_appliacnt_table">
             <H3>ID Applicants</H3>
             <thead>
                 <tr>
@@ -46,3 +46,5 @@
         </table>
     </div>
 </div>
+   <!--local js calls-->
+    <script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>

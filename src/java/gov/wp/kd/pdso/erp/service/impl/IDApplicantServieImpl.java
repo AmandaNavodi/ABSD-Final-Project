@@ -10,22 +10,29 @@ import gov.wp.kd.pdso.erp.dao.impl.IDApplicantImpl;
 import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import gov.wp.kd.pdso.erp.service.IDApplicantService;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  *
  * @author nisalsp9
  */
-public class IDApplicantServieImpl implements IDApplicantService{
+public class IDApplicantServieImpl implements IDApplicantService {
 
-    public boolean addIDApplicant(Connection connection,IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
+    public boolean addIDApplicant(Connection connection, IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
 
         ID_Applicant dao = new IDApplicantImpl();
-        
-        return dao.addIDApplicant(connection,applicant);
 
+        return dao.addIDApplicant(connection, applicant);
 
     }
-    
+
+    public ResultSet getIDApplicant(Connection connection) throws ClassNotFoundException, SQLException {
+
+        ID_Applicant dao = new IDApplicantImpl();
+
+        return dao.getIDApplicant(connection);
+
+    }
 
 }

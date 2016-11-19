@@ -1,5 +1,3 @@
-/* global Mustache */
-
 $('document').ready(function () {
 
 
@@ -25,6 +23,7 @@ $('document').ready(function () {
         $.get('components/senior_citizenship_ID/view_all_id_applicants.jsp', function (template) {
             var rendered = Mustache.render(template, {});
             $('#main-content').html(rendered);
+            senior_citizenship_ID.init();
         });
     };
 

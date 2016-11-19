@@ -13,6 +13,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -20,6 +21,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -61,7 +63,52 @@ public class IDApplicant extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        System.out.println("do get hit");
+        try {
+            System.out.println("do get hit");
+            
+            Connection connection = DatabaseResourceFactory.getResourceFactory().getConnection();
+            
+            IDApplicantService service = new IDApplicantServieImpl();
+            
+            ResultSet resultSet =  service.getIDApplicant(connection);     
+            
+            JSONArray jSONArray = new JSONArray();
+                        
+            while (resultSet.next()) {
+                JSONObject json = new JSONObject();
+                json.put("id", resultSet.getString(1));
+                json.put("name", resultSet.getString(2));
+                json.put("tel", resultSet.getString(3));
+                json.put("address", resultSet.getString(4));
+                json.put("gender", resultSet.getString(5));
+                json.put("job", resultSet.getString(6));
+                json.put("dob", resultSet.getString(7));
+                json.put("nic", resultSet.getString(8));
+                json.put("grama", resultSet.getString(9));
+                json.put("dsd", resultSet.getString(10));
+                json.put("district", resultSet.getString(11));
+                json.put("date", resultSet.getString(12));
+                jSONArray.put(json);
+                
+                
+            }
+             
+            
+            PrintWriter out = response.getWriter();
+            out.print(jSONArray);
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JSONException ex) {
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        
 
     }
 

@@ -65,15 +65,15 @@ public class IDApplicant extends HttpServlet {
 
         try {
             System.out.println("do get hit");
-            
+
             Connection connection = DatabaseResourceFactory.getResourceFactory().getConnection();
-            
+
             IDApplicantService service = new IDApplicantServieImpl();
-            
-            ResultSet resultSet =  service.getIDApplicant(connection);     
-            
+
+            ResultSet resultSet = service.getIDApplicant(connection);
+
             JSONArray jSONArray = new JSONArray();
-                        
+
             while (resultSet.next()) {
                 JSONObject json = new JSONObject();
                 json.put("id", resultSet.getString(1));
@@ -89,16 +89,12 @@ public class IDApplicant extends HttpServlet {
                 json.put("district", resultSet.getString(11));
                 json.put("date", resultSet.getString(12));
                 jSONArray.put(json);
-                
-                
+
             }
-             
-            
+
             PrintWriter out = response.getWriter();
             out.print(jSONArray);
-            
-            
-            
+
         } catch (SQLException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
@@ -106,9 +102,6 @@ public class IDApplicant extends HttpServlet {
         } catch (JSONException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        
-        
 
     }
 
@@ -165,6 +158,25 @@ public class IDApplicant extends HttpServlet {
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        try {
+            String id = req.getParameter("id");
+
+            Connection connection = DatabaseResourceFactory.getResourceFactory().getConnection();
+
+            IDApplicantService service = new IDApplicantServieImpl();
+
+            service.daleteApplicant(connection, id);
+        } catch (SQLException ex) {
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         }
 

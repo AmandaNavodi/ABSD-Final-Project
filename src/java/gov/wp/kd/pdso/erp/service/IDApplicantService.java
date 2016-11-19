@@ -20,4 +20,6 @@ public interface IDApplicantService {
 
     public ResultSet getIDApplicant(Connection connection) throws ClassNotFoundException, SQLException;
 
+    public boolean daleteApplicant(Connection connection, String id) throws ClassNotFoundException, SQLException;
+
 }

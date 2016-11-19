@@ -64,9 +64,12 @@ var senior_citizenship_ID = (function () {
     
     
     var deleteApplicant = function (id){
-        
-        
-        alert("delete Applicant " + id);
+       
+         return $.ajax({
+            url: "/ERP/IDApplicant?id=" + id,
+            type: "DELETE",
+            contentType: "application/json"
+        });
         
     };
     

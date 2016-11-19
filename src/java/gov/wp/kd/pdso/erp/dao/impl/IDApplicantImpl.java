@@ -43,10 +43,20 @@ public class IDApplicantImpl implements ID_Applicant {
     public ResultSet getIDApplicant(Connection connection) throws ClassNotFoundException, SQLException {
 
         String sql = "select * from ID_applicant";
-        
+
         Statement statement = connection.createStatement();
-        
+
         return statement.executeQuery(sql);
-    
+
+    }
+
+    public boolean daleteApplicant(Connection connection, String id) throws ClassNotFoundException, SQLException {
+
+        String sql = "delete from ID_applicant where applicant_id = '" + id + "'";
+
+        Statement statement = connection.createStatement();
+
+        return 0 < statement.executeUpdate(sql);
+
     }
 }

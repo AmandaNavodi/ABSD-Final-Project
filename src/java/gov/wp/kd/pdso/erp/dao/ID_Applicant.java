@@ -18,4 +18,5 @@ public interface ID_Applicant {
     
     public boolean addIDApplicant(Connection connection,IDApplicantDTO applicant)throws ClassNotFoundException,SQLException;
     public ResultSet getIDApplicant(Connection connection)throws ClassNotFoundException,SQLException;
+    public boolean daleteApplicant(Connection connection,String id)throws ClassNotFoundException,SQLException;
 }

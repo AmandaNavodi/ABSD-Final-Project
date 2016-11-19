@@ -35,4 +35,12 @@ public class IDApplicantServieImpl implements IDApplicantService {
 
     }
 
+    public boolean daleteApplicant(Connection connection, String id) throws ClassNotFoundException, SQLException {
+
+        ID_Applicant dao = new IDApplicantImpl();
+
+        return dao.daleteApplicant(connection, id);
+
+    }
+
 }

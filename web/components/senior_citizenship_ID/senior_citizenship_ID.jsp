@@ -31,7 +31,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="both name(s) e.g Nisal Sanjaya Perera" required="required" type="text">
+                            <input id="name" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="2" name="name" placeholder="Both name(s) e.g Nisal Sanjaya Perera" required="required" type="text">
                         </div>
                     </div>
 
@@ -40,7 +40,7 @@
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telephone">Telephone <span class="required">*</span>
                         </label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                            <input type="tel" id="telephone" name="phone" placeholder="full telephone number e.g 0382238949" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
+                            <input type="tel" id="telephone" name="phone" placeholder="Full telephone number e.g 0382238949" required="required" data-validate-length-range="8,20" class="form-control col-md-7 col-xs-12">
                         </div>
                     </div>
 

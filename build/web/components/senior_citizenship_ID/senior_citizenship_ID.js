@@ -61,10 +61,20 @@ var senior_citizenship_ID = (function () {
                 );
 
     });
+    
+    
+    var deleteApplicant = function (id){
+        
+        
+        alert("delete Applicant " + id);
+        
+    };
+    
+    
 
     fns.init = function () {
 
-        var allInsightsTable = $("#id_appliacnt_table").DataTable({
+        var appliacntTable = $("#id_appliacnt_table").DataTable({
             responsive: true,
             orderCellsTop: true,
             autoWidth: false,
@@ -127,14 +137,6 @@ var senior_citizenship_ID = (function () {
                         window.location.href = "#/senior_citizenship_ID";
                     }
                 },
-                {
-                    text: '<i class="fa fa-print"></i> Print Temporary ID',
-                    className: 'btn-primary',
-                    container: '#b3',
-                    action: function (e, dt, node, config) {
-                        alert("Print ID");
-                    }
-                },
                 'copyHtml5',
                 'excelHtml5',
                 'csvHtml5',
@@ -146,6 +148,46 @@ var senior_citizenship_ID = (function () {
                 }
             ]
         });
+
+        var settings = '<div class="btn-group btn-group-solid">\
+            <button type="button" class="btn btn-default dropdown-toggle" style="margin-right:8px"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">\
+            Action <span class="caret"></span>\
+            </button>\
+            <ul class="dropdown-menu">\
+             <li><a href="#" id="td-edit">Edit</a></li>\
+             <li><a href="#" id="td-delete">Delete</a></li>\
+             <li><a href="#" id="td-delete">Print ID</a></li>\
+            </ul>\
+            </div>';
+
+        $("#b3").append(settings);
+
+
+
+        // Handle row deletion
+        $("#td-delete").on('click', function () {
+            if (appliacntTable.column(0).checkboxes.selected().length > 0) {
+                $("#confirm-delete").modal();
+            }
+        });
+
+        $("#btn-delete").on('click', function () {
+
+            var id = appliacntTable.column(0).checkboxes.selected();
+
+            $.each(id, function (k, v) {
+
+                deleteApplicant(v.id);
+
+            });
+
+            $("#confirm-delete").modal('hide');
+
+            appliacntTable.ajax.reload();
+
+        });
+
+
     };// end of init
     return fns;
 

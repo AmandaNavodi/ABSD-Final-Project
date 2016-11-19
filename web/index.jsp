@@ -83,7 +83,16 @@
                                     <li><a><i class="fa fa-heart-o"></i>Social Services Division<span class="fa fa-chevron-down"></span></a>
                                         <ul class="nav child_menu">
                                             <li><a href="#/aids_and_equipments">Aids and Equipments</a></li>
-                                            <li><a href="#/senior_citizenship_ID">Senior Citizenship ID</a></li>
+                                            <li><a href="#">Senior Citizenship ID</a>
+                                                <ul class="nav child_menu">
+                                                    <li class="sub_menu"><a href="#/senior_citizenship_ID">New ID Applicant</a>
+                                                    </li>
+                                                    <li><a href="#/view_all_ID_applicants">View All Applicants</a>
+                                                    </li>
+<!--                                                    <li><a href="#">Level Two</a>
+                                                    </li>-->
+                                                </ul>
+                                            </li>
                                             <li><a href="#/dry_rations">Dry Rations</a></li>
                                             <li><a href="#/CBR_project">CBR Project</a></li>                                           
                                         </ul>
@@ -131,7 +140,7 @@
                             </div>
 
                         </div>
-                     
+
                     </div>
                 </div>
 
@@ -144,9 +153,9 @@
                             </div>
 
                             <ul class="nav navbar-nav navbar-right">
-                       
 
-                      
+
+
                             </ul>
                         </nav>
                     </div>

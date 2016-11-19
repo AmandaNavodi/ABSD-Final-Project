@@ -1,9 +1,9 @@
 /* global Mustache */
 
 $('document').ready(function () {
-    
 
-    
+
+
     //
     // create some functions to be executed when
     // the correct route is issued by the user.
@@ -11,13 +11,23 @@ $('document').ready(function () {
 
 
     var showSeniorCitizenshipID = function () {
-          
+
         console.log("hello senior_citizenship_ID");
         $.get('components/senior_citizenship_ID/senior_citizenship_ID.jsp', function (template) {
             var rendered = Mustache.render(template, {});
             $('#main-content').html(rendered);
         });
     };
+
+    var showIDApplicants = function () {
+
+        console.log("hello view_id_applicant");
+        $.get('components/senior_citizenship_ID/view_all_id_applicants.jsp', function (template) {
+            var rendered = Mustache.render(template, {});
+            $('#main-content').html(rendered);
+        });
+    };
+
 
     var showCreative = function () {
         console.log("hello aids_and_equipments");
@@ -31,7 +41,7 @@ $('document').ready(function () {
 
 
     var showViewCampaign = function () {
-        
+
         console.log("hello dry_rations");
         $.get('components/dry_rations/dry_rations.jsp', function (template) {
             var rendered = Mustache.render(template, {});
@@ -46,7 +56,7 @@ $('document').ready(function () {
         $.get('components/CBR_project/CBR_project.jsp', function (template) {
             var rendered = Mustache.render(template, {});
             $('#main-content').html(rendered);
-          //  creative.init();
+            //  creative.init();
 
         });
     };
@@ -55,8 +65,7 @@ $('document').ready(function () {
     // define the routing table.
     //
     var routes = {
-
-          
+        '/view_all_ID_applicants': showIDApplicants,
         '/senior_citizenship_ID': showSeniorCitizenshipID,
         '/aids_and_equipments': showCreative,
         '/dry_rations': showViewCampaign,

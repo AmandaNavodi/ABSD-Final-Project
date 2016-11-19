@@ -120,11 +120,19 @@ var senior_citizenship_ID = (function () {
             'order': [[1, 'asc']],
             buttons: [
                 {
-                    text: '<i class="fa fa-refresh"></i> Refresh',
+                    text: '<i class="fa fa-plus"></i> New Applicant',
                     className: 'btn-primary',
                     container: '#b3',
                     action: function (e, dt, node, config) {
-                        allInsightsTable.ajax.reload();
+                        window.location.href = "#/senior_citizenship_ID";
+                    }
+                },
+                {
+                    text: '<i class="fa fa-print"></i> Print Temporary ID',
+                    className: 'btn-primary',
+                    container: '#b3',
+                    action: function (e, dt, node, config) {
+                        alert("Print ID");
                     }
                 },
                 'copyHtml5',

@@ -43,4 +43,12 @@ public class IDApplicantServieImpl implements IDApplicantService {
 
     }
 
+    public boolean updateIDApplicant(Connection connection, IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
+
+        ID_Applicant dao = new IDApplicantImpl();
+        
+        return dao.updateIDApplicant(connection, applicant);
+
+    }
+
 }

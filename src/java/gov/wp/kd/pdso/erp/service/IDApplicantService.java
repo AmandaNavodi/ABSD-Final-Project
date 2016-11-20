@@ -22,4 +22,6 @@ public interface IDApplicantService {
 
     public boolean daleteApplicant(Connection connection, String id) throws ClassNotFoundException, SQLException;
 
-}
+    public boolean updateIDApplicant(Connection connection, IDApplicantDTO applicant) throws ClassNotFoundException, SQLException;
+
+    }

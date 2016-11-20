@@ -59,4 +59,26 @@ public class IDApplicantImpl implements ID_Applicant {
         return 0 < statement.executeUpdate(sql);
 
     }
+
+    public boolean updateIDApplicant(Connection connection, IDApplicantDTO applicant) throws ClassNotFoundException, SQLException {
+
+        String sql = "update ID_applicant set name = '" + applicant.getName() + "',"
+                                            + "phone = '" + applicant.getTel() + "',"
+                                            + "address = '" + applicant.getAddress() + "',"
+                                            + "gender = '" + applicant.getGender() + "',"
+                                            + "job = '" + applicant.getJob() + "',"
+                                            + "DOB = '" + applicant.getDOB() + "',"
+                                            + "NIC = '" + applicant.getNIC() + "',"
+                                            + "grama = '" + applicant.getGrama() + "',"
+                                            + "DSD = '" + applicant.getDSD() + "',"
+                                            + "district = '" + applicant.getDistrict() + "',"
+                                            + "Date = '" + applicant.getDate() + "' "
+                                            + "where applicant_id = '" + applicant.getApplicantID() + "'";
+        
+        Statement statement = connection.createStatement();
+        
+        return 0 < statement.executeUpdate(sql);
+        
+
+    }
 }

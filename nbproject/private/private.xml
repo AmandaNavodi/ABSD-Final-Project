@@ -4,6 +4,10 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/nisalsp9/workspace/java/src/github.com/cis/ABSD-Final-Project/web/components/senior_citizenship_ID/senior_citizenship_ID.js</file>
+            <file>file:/home/nisalsp9/workspace/java/src/github.com/cis/ABSD-Final-Project/src/java/gov/wp/kd/pdso/erp/controller/IDApplicant.java</file>
+            <file>file:/home/nisalsp9/workspace/java/src/github.com/cis/ABSD-Final-Project/web/components/senior_citizenship_ID/ID_print_loader.jsp</file>
+            <file>file:/home/nisalsp9/workspace/java/src/github.com/cis/ABSD-Final-Project/web/components/senior_citizenship_ID/view_all_id_applicants.jsp</file>
+            <file>file:/home/nisalsp9/workspace/java/src/github.com/cis/ABSD-Final-Project/src/java/gov/wp/kd/pdso/erp/controller/SCIDPrinter.java</file>
         </group>
     </open-files>
 </project-private>

@@ -10,17 +10,32 @@ import gov.wp.kd.pdso.erp.dto.IDApplicantDTO;
 import gov.wp.kd.pdso.erp.service.IDApplicantService;
 import gov.wp.kd.pdso.erp.service.impl.IDApplicantServieImpl;
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import net.sf.jasperreports.engine.JRDataSource;
+import net.sf.jasperreports.engine.JREmptyDataSource;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -94,6 +109,7 @@ public class IDApplicant extends HttpServlet {
 
             PrintWriter out = response.getWriter();
             out.print(jSONArray);
+            connection.close();
 
         } catch (SQLException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
@@ -174,9 +190,58 @@ public class IDApplicant extends HttpServlet {
             IDApplicantService service = new IDApplicantServieImpl();
 
             service.daleteApplicant(connection, id);
+            connection.close();
         } catch (SQLException ex) {
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+    }
+
+    @Override
+    protected void doOptions(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        try {
+            BufferedReader reader = req.getReader();
+            JSONObject jsonObject = new JSONObject(reader.readLine());
+            String name = jsonObject.getString("name");
+            String address = jsonObject.getString("address");
+            String DOB = jsonObject.getString("dob");
+            String NIC = jsonObject.getString("nic");
+
+            Map<String, Object> params = new HashMap();
+
+            params.put("NAME", name);
+            params.put("NIC", NIC);
+            params.put("ADDRESS", address);
+            params.put("DOB", DOB);
+
+            HttpSession session = req.getSession();
+            ServletOutputStream outputStream = resp.getOutputStream();        
+            String jrxmlFile = session.getServletContext().getRealPath("/reports/scid.jrxml");          
+
+            InputStream input = new FileInputStream(new File(jrxmlFile));
+
+            JasperReport jasperReport = JasperCompileManager.compileReport(input);
+
+            JRDataSource dataSource = new JREmptyDataSource();
+
+            JasperPrint jasperPrint = JasperFillManager.fillReport(jasperReport, params, dataSource);
+
+            JasperExportManager.exportReportToPdfStream(jasperPrint, outputStream);
+
+            outputStream.flush();
+
+            outputStream.close();
+
+            System.out.println("lllllll");
+
+        } catch (JSONException ex) {
+            System.out.println("kkkkkk");
+            Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            System.out.println("ppppp");
             Logger.getLogger(IDApplicant.class.getName()).log(Level.SEVERE, null, ex);
         }
 

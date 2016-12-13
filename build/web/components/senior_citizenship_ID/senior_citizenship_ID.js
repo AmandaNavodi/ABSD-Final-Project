@@ -61,19 +61,39 @@ var senior_citizenship_ID = (function () {
                 );
 
     });
-    
-    
-    var deleteApplicant = function (id){
-       
-         return $.ajax({
+
+
+    var deleteApplicant = function (id) {
+
+        return $.ajax({
             url: "/ERP/IDApplicant?id=" + id,
             type: "DELETE",
             contentType: "application/json"
         });
-        
+
     };
-    
-    
+
+
+    var printID = function (name, address, dob, nic) {
+//        return $.ajax({
+//            url: "/ERP/IDApplicant",
+//            type: "OPTIONS",
+//            contentType: "application/json",
+//            data: JSON.stringify({
+//                'name': name,
+//                'address': address,
+//                'dob': dob,
+//                'nic': nic
+//            })
+//        });
+
+
+        window.open("../ERP/components/senior_citizenship_ID/ID_print_loader.jsp?name=" + name + "&address=" + address + "&dob=" + dob + "&nic=" + nic + "");
+
+
+    };
+
+
 
     fns.init = function () {
 
@@ -111,12 +131,9 @@ var senior_citizenship_ID = (function () {
                 {"data": "dsd", "width": "10%"},
                 {"data": "district", "width": "10%"},
                 {"data": "date", "width": "10%"}
-
-
             ],
             colReorder: true,
-            dom: "<'row table-toolbar'<'col-sm-6'<'#b3'>><'col-sm-6'B>> <'row'>" +
-                    "<'row'<'col-sm-6'l> <'col-sm-6'f>>" +
+            dom: "<'row table-toolbar'<'col-sm-1'<'#b3'>><'col-sm-6'B><'col-sm-1'l> <'col-sm-2'f>> <'row'>" +
                     "<'row'<'col-sm-12'tr>>" +
                     "<'row'<'col-sm-5'i><'col-sm-7'p>>",
             columnDefs: [
@@ -159,7 +176,7 @@ var senior_citizenship_ID = (function () {
             <ul class="dropdown-menu">\
              <li><a href="#" id="td-edit">Edit</a></li>\
              <li><a href="#" id="td-delete">Delete</a></li>\
-             <li><a href="#" id="td-delete">Print ID</a></li>\
+             <li><a href="#" id="td-print">Print ID</a></li>\
             </ul>\
             </div>';
 
@@ -189,6 +206,45 @@ var senior_citizenship_ID = (function () {
             appliacntTable.ajax.reload();
 
         });
+
+
+
+        $("#td-print").on('click', function () {
+            if (appliacntTable.column(0).checkboxes.selected().length > 0) {
+
+
+
+                //$("#confirm-print").modal();
+                var id = appliacntTable.column(0).checkboxes.selected();
+
+                $.each(id, function (k, v) {
+//
+//                    $('#name').val(v.name);
+//                    $('#address').val(v.address);
+//                    $('#dob').val(v.dob);
+//                    $('#nic').val(v.nic);
+                    printID(v.name, v.address, v.dob, v.nic);
+
+                });
+
+
+            }
+        });
+
+        $('#btn-print').on('click', function () {
+
+            $("#confirm-print").modal('hide');
+            printID($('#name').val(), $('#address').val(), $('#dob').val(), $('#nic').val());
+
+
+        });
+
+
+
+
+
+
+
 
 
     };// end of init

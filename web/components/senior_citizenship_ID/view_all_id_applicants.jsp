@@ -68,6 +68,47 @@
 </div>
 <!-- End delete modal -->
 
+<!-- Start print id confirmation -->
+<div class="modal fade" id="confirm-print" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Confirm Print ID</h4>
+            </div>
+            <div class="modal-body">
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
+                    </label>
+                    <input type="text" readonly id="name" style="border: none"/>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="address">Address <span class="required">*</span>
+                    </label>
+                    <input type="text" readonly id="address" style="border: none"/>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="dob">DOB <span class="required">*</span>
+                    </label>
+                    <input type="text" readonly id="dob" style="border: none"/>
+                </div>
+                <div class="item form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nic">NIC No <span class="required">*</span>
+                    </label>
+                    <input type="text" readonly id="nic" style="border: none"/>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="btn-print">Print ID</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+</div>
+<!-- End print modal -->
 
-   <!--local js calls-->
-    <script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>
+
+
+<!--local js calls-->
+<script type="text/javascript" src="components/senior_citizenship_ID/senior_citizenship_ID.js"></script>

@@ -3,30 +3,13 @@
     Created on : Oct 16, 2016, 10:23:46 PM
     Author     : nisalsp9
 --%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
-<div class="page-title">
-
-
-    <div class="title_right">
-        <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
-
-        </div>
-    </div>
-</div>
-<div class="clearfix"></div>
-
 <div class="row">
     <div class="col-md-12 col-sm-12 col-xs-12">
         <div class="x_panel">
-
             <div class="x_content">
-
                 <form class="form-horizontal form-label-left" novalidate>
-
                     <span class="section">Senior Citizenship ID Applicant Details</span>
-
                     <div class="item form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">Name <span class="required">*</span>
                         </label>

@@ -181,16 +181,12 @@ var senior_citizenship_ID = (function () {
             </div>';
 
         $("#b3").append(settings);
-
-
-
         // Handle row deletion
         $("#td-delete").on('click', function () {
             if (appliacntTable.column(0).checkboxes.selected().length > 0) {
                 $("#confirm-delete").modal();
             }
         });
-
         $("#btn-delete").on('click', function () {
 
             var id = appliacntTable.column(0).checkboxes.selected();
@@ -206,9 +202,6 @@ var senior_citizenship_ID = (function () {
             appliacntTable.ajax.reload();
 
         });
-
-
-
         $("#td-print").on('click', function () {
             if (appliacntTable.column(0).checkboxes.selected().length > 0) {
 
@@ -230,7 +223,6 @@ var senior_citizenship_ID = (function () {
 
             }
         });
-
         $('#btn-print').on('click', function () {
 
             $("#confirm-print").modal('hide');
@@ -238,15 +230,6 @@ var senior_citizenship_ID = (function () {
 
 
         });
-
-
-
-
-
-
-
-
-
     };// end of init
     return fns;
 

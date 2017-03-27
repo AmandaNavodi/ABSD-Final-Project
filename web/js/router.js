@@ -59,6 +59,26 @@ $('document').ready(function () {
 
         });
     };
+    
+    var showUserMgt = function () {
+        console.log("hello user mgt");
+        $.get('components/user_management/user_mgt.jsp', function (template) {
+            var rendered = Mustache.render(template, {});
+            $('#main-content').html(rendered);
+            //  creative.init();
+
+        });
+    };
+    
+    var showNewUserType = function () {
+        console.log("hello user type");
+        $.get('components/user_management/new_user_type.jsp', function (template) {
+            var rendered = Mustache.render(template, {});
+            $('#main-content').html(rendered);
+            //  creative.init();
+
+        });
+    };
 
     //
     // define the routing table.
@@ -68,7 +88,9 @@ $('document').ready(function () {
         '/senior_citizenship_ID': showSeniorCitizenshipID,
         '/aids_and_equipments': showCreative,
         '/dry_rations': showViewCampaign,
-        '/CBR_project': showViewCampaignForCreavtive
+        '/CBR_project': showViewCampaignForCreavtive,
+        '/user_mgt': showUserMgt,
+        '/new_user_type':showNewUserType
 
     };
 
